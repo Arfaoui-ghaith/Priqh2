@@ -5,6 +5,8 @@ import { Container, Card, Button, Modal } from 'react-bootstrap';
 import { MapContainer , TileLayer, FeatureGroup } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw"
 import axios from 'axios'
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MapFormAdd() {
     const animatedComponents = makeAnimated();
@@ -61,10 +63,20 @@ export default function MapFormAdd() {
 
 			if (res.status === 201) {
 				console.log(res.data);
+                toast.success('Success', {
+					position: 'top-right',
+					autoClose: 5000,
+					draggable: false
+				});
                 window.location.replace('/Quartiers');
 			}
 
 			} catch (err) {
+                toast.error(err.response.data.message, {
+					position: 'top-right',
+					autoClose: 5000,
+					draggable: true
+				});
 				console.log(err);
 			}
 	}
@@ -128,6 +140,7 @@ export default function MapFormAdd() {
 
     return (
         <React.Fragment>
+        <ToastContainer />
         <Container>
                 { projet ?
                     <Card>

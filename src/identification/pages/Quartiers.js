@@ -8,6 +8,9 @@ import FeatherIcon from 'feather-icons-react';
 import MapFormAdd from '../components/MapFormAdd'
 import { Container, Row, Col, Modal, Card, Button } from 'react-bootstrap';
 
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Quartiers() {
     const animatedComponents = makeAnimated();
     const [show, setShow] = React.useState(false);
